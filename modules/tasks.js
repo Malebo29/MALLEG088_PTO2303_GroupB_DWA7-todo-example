@@ -1,8 +1,9 @@
 // @ts-check
 
-import { doesHtmlExist, getHtml } from "../modules/helpers.js";
+import { doesHtmlExist, getHtml } from "./helpers.js";
+
 // eslint-disable-next-line no-unused-vars
-import { Task, state } from "../modules/state.js";
+import { Task, state } from "./state.js";
 
 /**
  * Descriptions
