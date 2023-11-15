@@ -2,7 +2,7 @@
 
 // import { doesHtmlExist, getHtml } from "./helpers.js";
 // eslint-disable-next-line no-unused-vars
-import { Task, state } from "./state.js";
+import { Task, state } from "./modules/state.js";
 
 /**
  * Description
@@ -50,15 +50,11 @@ export const doesHtmlExist = (dataAttr, value) => {
  */
 
 const addTaskToHtml = (id) => {
-  const isExisting = document.querySelector(`[data-task="${id}"]`);
-  if (isExisting) throw new Error("Task with that ID already added");
-
-  const list = getHtml("list");
-  const isHtmlElement = list instanceof HTMLElement;
-  if (!isHtmlElement) {
-    throw new Error('"data-list" attribute not found in HTML');
+  if (doesHtmlExist("task", id)) {
+    throw new Error("Task with that ID already added");
   }
 
+  const list = getHtml("list");
   const preview = document.createElement("li");
   preview.className = "task";
   preview.dataset.task = id;
@@ -90,7 +86,7 @@ window.addEventListener("error", () => {
 });
 
 addTaskToHtml("test");
-addTaskToHtml("test");
+addTaskToHtml("test", { title: "Wash the Dog" });
 
 /**
  *
